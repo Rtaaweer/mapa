@@ -1,0 +1,82 @@
+<div class="delivery-container">
+  <!-- Panel de Control del Repartidor -->
+  <div class="delivery-header">
+    <div class="delivery-info">
+      <h2>🚗 Panel del Repartidor</h2>
+      <div class="delivery-details">
+        <p><strong>Nombre:</strong> {{ deliveryPerson.name || 'Cargando...' }}</p>
+        <p><strong>Teléfono:</strong> {{ deliveryPerson.phone || 'N/A' }}</p>
+        <p><strong>Estado:</strong> 
+          <span [class]="isAvailable ? 'status-available' : 'status-busy'">
+            {{ isAvailable ? 'Disponible' : 'Ocupado' }}
+          </span>
+        </p>
+        <p><strong>Paquetes asignados:</strong> {{ assignedPackages.length }}</p>
+      </div>
+    </div>
+    
+    <div class="delivery-controls">
+      <button 
+        (click)="toggleAvailability()" 
+        [class]="isAvailable ? 'btn-busy' : 'btn-available'">
+        {{ isAvailable ? 'Cambiar a NO DISPONIBLE' : 'Cambiar a Disponible' }}
+      </button>
+      <button 
+        (click)="getCurrentLocation()" 
+        class="btn-update-location"
+        [disabled]="!isAvailable">
+        📍 Actualizar Ubicación
+      </button>
+      <button 
+        (click)="useRealGPSLocation()" 
+        class="btn-gps-location"
+        [disabled]="!isAvailable">
+        🛰️ Usar Ubicación GPS Real
+      </button>
+      <button 
+        (click)="toggleLocationMode()" 
+        class="btn-toggle-mode">
+        {{ useRealLocation ? '🎯 Modo: GPS Real' : '🎲 Modo: Simulado' }}
+      </button>
+      <button (click)="refreshData()" class="btn-refresh">
+        🔄 Actualizar Datos
+      </button>
+      <button (click)="logout()" class="btn-logout">
+        Cerrar Sesión
+      </button>
+    </div>
+  </div>
+
+  <!-- Mapa del Repartidor - Ahora usando el componente app-map -->
+  <div class="map-container">
+    <app-map></app-map>
+  </div>
+
+  <!-- Lista de Paquetes Asignados -->
+  <div class="packages-section">
+    <div class="packages-header">
+      <h3>📦 Paquetes Asignados ({{assignedPackages.length}})</h3>
+      <button (click)="refreshAssignedPackages()" class="btn btn-secondary">
+        🔄 Actualizar Paquetes
+      </button>
+    </div>
+    
+    <div *ngIf="assignedPackages.length === 0" class="alert alert-info">
+      <p>ℹ️ No tienes paquetes asignados actualmente.</p>
+      <small>Usa el botón "🔄 Actualizar Paquetes" para verificar nuevas asignaciones.</small>
+    </div>
+    
+    <div *ngFor="let package of assignedPackages" class="package-card">
+      <div class="package-info">
+        <h4>📦 Paquete #{{ package.id }}</h4>
+        <p><strong>Destinatario:</strong> {{ package.recipient_name }}</p>
+        <p><strong>Dirección:</strong> {{ package.delivery_address }}</p>
+        <p><strong>Teléfono:</strong> {{ package.recipient_phone }}</p>
+        <p><strong>Estado:</strong> 
+          <span [class]="'status-' + package.status">{{ package.status }}</span>
+        </p>
+        <p><strong>Fecha de creación:</strong> {{ package.created_at | date:'short' }}</p>
+      </div>
+    </div>
+  </div>
+</div>

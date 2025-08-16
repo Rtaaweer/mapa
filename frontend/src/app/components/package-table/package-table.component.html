@@ -1,0 +1,48 @@
+<div class="table-container">
+  <div *ngIf="loading" class="loading">
+    Cargando paquetes...
+  </div>
+  
+  <table *ngIf="!loading" class="packages-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Destinatario</th>
+        <th>Dirección</th>
+        <th>Repartidor</th>
+        <th>Estado</th>
+        <th>Fecha</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let package of packages">
+        <td>{{package.id}}</td>
+        <td>{{package.destinatario}}</td>
+        <td>{{package.direccion}}</td>
+        <td>{{package.delivery_name || 'No asignado'}}</td>
+        <td>
+          <span [class]="getStatusClass(package.status)">
+            {{getStatusText(package.status)}}
+          </span>
+        </td>
+        <td>{{package.created_at | date:'short'}}</td>
+        <td class="actions">
+          <select (change)="onStatusChange($event, package.id)" [value]="package.status">
+            <option value="pending">Pendiente</option>
+            <option value="in_transit">En tránsito</option>
+            <option value="delivered">Entregado</option>
+            <option value="cancelled">Cancelado</option>
+          </select>
+          <button class="btn-delete" (click)="deletePackage(package.id)">
+            🗑️
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div *ngIf="!loading && packages.length === 0" class="no-packages">
+    No hay paquetes registrados
+  </div>
+</div>

@@ -1,0 +1,107 @@
+.table-container {
+  overflow-x: auto;
+}
+
+.packages-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background-color: #222222;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  border-radius: 8px;
+}
+
+.packages-table th,
+.packages-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #333333;
+  color: #cccccc;
+}
+
+.packages-table th {
+  background-color: #2a2a2a;
+  font-weight: bold;
+  color: #ff8c00;
+}
+
+.packages-table tr:hover {
+  background-color: #2a2a2a;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.actions select {
+  padding: 5px;
+  border: 1px solid #444444;
+  border-radius: 3px;
+  font-size: 12px;
+  background-color: #333333;
+  color: #cccccc;
+}
+
+.btn-delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 5px;
+  border-radius: 3px;
+  transition: background-color 0.3s;
+  color: #cccccc;
+}
+
+.btn-delete:hover {
+  background-color: #c62828;
+  color: white;
+}
+
+/* Status badges */
+.status-pending {
+  background-color: #856404;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.status-transit {
+  background-color: #004085;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.status-delivered {
+  background-color: #155724;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.status-cancelled {
+  background-color: #721c24;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.loading, .no-packages {
+  text-align: center;
+  padding: 40px;
+  color: #999999;
+  font-style: italic;
+  background-color: #2a2a2a;
+  border-radius: 8px;
+}

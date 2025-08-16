@@ -1,0 +1,411 @@
+.delivery-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #1a1a1a;
+  color: #cccccc;
+  min-height: 100vh;
+}
+
+.delivery-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: #222222;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.delivery-info h2 {
+  margin: 0 0 15px 0;
+  color: #ff8c00;
+}
+
+.delivery-details p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #cccccc;
+}
+
+.status-available {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.status-busy {
+  color: #ff5252;
+  font-weight: bold;
+}
+
+.delivery-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.delivery-controls button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.btn-available {
+  background-color: #4caf50;
+  color: white;
+}
+
+.btn-busy {
+  background-color: #ff5252;
+  color: white;
+}
+
+.btn-move {
+  background-color: #ff8c00;
+  color: white;
+}
+
+.btn-refresh {
+  background-color: #2196F3;
+  color: white;
+}
+
+.btn-update-location {
+  background-color: #9C27B0;
+  color: white;
+}
+
+.btn-update-location:disabled {
+  background-color: #666666;
+  color: #999999;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.btn-gps-location {
+  background-color: #00BCD4;
+  color: white;
+}
+
+.btn-gps-location:disabled {
+  background-color: #666666;
+  color: #999999;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.btn-toggle-mode {
+  background-color: #FF9800;
+  color: white;
+  font-size: 12px;
+}
+
+.btn-toggle-mode:hover {
+  background-color: #F57C00;
+}
+
+.delivery-controls button:hover {
+  opacity: 0.8;
+}
+
+.map-container {
+  margin-bottom: 30px;
+  height: 400px;
+  width: 100%;
+  border: 1px solid #333333;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#delivery-map {
+  height: 100%;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  background-color: #222222;
+}
+
+.packages-section h3 {
+  color: #ff8c00;
+  margin-bottom: 20px;
+}
+
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.package-card {
+  background: #222222;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  border-left: 4px solid #007bff;
+  color: #cccccc;
+}
+
+.package-card.status-pending {
+  border-left-color: #ffc107;
+}
+
+.package-card.status-in_transit {
+  border-left-color: #17a2b8;
+}
+
+.package-card.status-delivered {
+  border-left-color: #4caf50;
+}
+
+.package-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.package-header h4 {
+  margin: 0;
+  color: #ff8c00;
+}
+
+.package-status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.package-details p {
+  margin: 8px 0;
+  font-size: 14px;
+  color: #aaaaaa;
+}
+
+.package-info p {
+  margin: 8px 0;
+  font-size: 14px;
+  color: #aaaaaa;
+}
+
+/* Agregar estilos para los nuevos botones de estado */
+.package-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-status {
+  padding: 8px 12px;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  flex: 1;
+  min-width: 100px;
+}
+
+.btn-transit {
+  background-color: #333333;
+  color: #17a2b8;
+  border-color: #17a2b8;
+}
+
+.btn-transit:hover:not(:disabled) {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.btn-transit.active {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.btn-delivered {
+  background-color: #333333;
+  color: #4caf50;
+  border-color: #4caf50;
+}
+
+.btn-delivered:hover:not(:disabled) {
+  background-color: #4caf50;
+  color: white;
+}
+
+.btn-delivered.active {
+  background-color: #4caf50;
+  color: white;
+}
+
+.btn-returned {
+  background-color: #333333;
+  color: #ff8c00;
+  border-color: #ff8c00;
+}
+
+.btn-returned:hover:not(:disabled) {
+  background-color: #ff8c00;
+  color: white;
+}
+
+.btn-returned.active {
+  background-color: #ff8c00;
+  color: white;
+}
+
+.btn-status:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.delivered-badge {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.no-packages {
+  text-align: center;
+  padding: 40px;
+  color: #aaaaaa;
+  background: #222222;
+  border-radius: 8px;
+  border: 1px solid #333333;
+}
+
+/* Estilos para la sección de paquetes mejorada */
+.packages-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.packages-header h3 {
+  margin: 0;
+  color: #ff8c00;
+}
+
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.alert {
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.alert-info {
+  background-color: #d1ecf1;
+  border: 1px solid #bee5eb;
+  color: #0c5460;
+}
+
+.package-card {
+  background: #333333;
+  border: 1px solid #444444;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.package-info h4 {
+  margin: 0 0 10px 0;
+  color: #ff8c00;
+  font-size: 16px;
+}
+
+.package-info p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #cccccc;
+}
+
+.status-pending {
+  color: #ffc107;
+  font-weight: bold;
+}
+
+.status-assigned {
+  color: #17a2b8;
+  font-weight: bold;
+}
+
+.status-in_transit {
+  color: #007bff;
+  font-weight: bold;
+}
+
+.status-delivered {
+  color: #28a745;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .delivery-header {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .delivery-controls {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .delivery-controls button {
+    flex: 1;
+    min-width: 120px;
+  }
+  
+  .map-container {
+    height: 300px;
+  }
+  
+  .packages-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .packages-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.btn-logout {
+  background-color: #ff5252;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.btn-logout:hover {
+  background-color: #ff0000;
+}

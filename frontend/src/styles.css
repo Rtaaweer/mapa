@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #1a1a1a;
+  font-family: 'Poppins', sans-serif;
+  color: #cccccc;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}

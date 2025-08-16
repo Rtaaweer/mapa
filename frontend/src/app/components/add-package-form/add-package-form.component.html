@@ -1,0 +1,47 @@
+<form (ngSubmit)="onSubmit()" class="package-form">
+  <div class="form-group">
+    <label for="destinatario">Destinatario *</label>
+    <input 
+      type="text" 
+      id="destinatario" 
+      [(ngModel)]="packageData.destinatario" 
+      name="destinatario"
+      placeholder="Nombre del destinatario"
+      required>
+  </div>
+
+  <div class="form-group">
+    <label for="direccion">Dirección *</label>
+    <textarea 
+      id="direccion" 
+      [(ngModel)]="packageData.direccion" 
+      name="direccion"
+      placeholder="Dirección completa de entrega"
+      rows="3"
+      required></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="delivery">Repartidor *</label>
+    <select 
+      id="delivery" 
+      [(ngModel)]="packageData.delivery_person_id" 
+      name="delivery_person_id"
+      required>
+      <option value="">Seleccionar repartidor</option>
+      <option *ngFor="let delivery of deliveries" [value]="delivery.id">
+        {{delivery.name}} - {{delivery.status}}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-actions">
+    <button type="button" class="btn-secondary" (click)="onCancel()" [disabled]="loading">
+      Cancelar
+    </button>
+    <button type="submit" class="btn-primary" [disabled]="loading">
+      <span *ngIf="loading">Guardando...</span>
+      <span *ngIf="!loading">Agregar Paquete</span>
+    </button>
+  </div>
+</form>

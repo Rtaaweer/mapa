@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="header">
+    <h1>🚚 Sistema de Paquetería</h1>
+    <div class="admin-controls">
+      <button class="btn-primary" (click)="showAddPackageModal = true">
+        📦 Agregar Paquete
+      </button>
+      <button class="btn-secondary" (click)="logout()">
+        Cerrar Sesión
+      </button>
+    </div>
+  </div>
+  
+  <!-- Mapa con ubicaciones en tiempo real -->
+  <div class="map-section">
+    <h2>🗺️ Mapa en Tiempo Real</h2>
+    <app-map></app-map>
+  </div>
+  
+  <!-- Grid de status de deliveries -->
+  <div class="map-section">
+    <h2>Repartidores</h2>
+    <app-delivery-status-grid 
+      (assignPackages)="onAssignPackages($event)">
+    </app-delivery-status-grid>
+  </div>
+  
+  <div class="packages-section">
+    <h2>Lista de Paquetes</h2>
+    <app-package-table></app-package-table>
+  </div>
+  
+  <!-- Modal para agregar paquete -->
+  <div class="modal" [class.show]="showAddPackageModal" (click)="closeModal($event)">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h3>📦 Agregar Nuevo Paquete</h3>
+        <button class="close-btn" (click)="showAddPackageModal = false">×</button>
+      </div>
+      <app-add-package-form 
+        (packageAdded)="onPackageAdded($event)"
+        (cancel)="showAddPackageModal = false">
+      </app-add-package-form>
+    </div>
+  </div>
+  
+  <!-- Modal para asignar paquetes -->
+  <app-assign-package-modal 
+    [isVisible]="showAssignModal"
+    [deliveryId]="selectedDeliveryId"
+    [deliveryName]="selectedDeliveryName"
+    (packagesAssigned)="onPackagesAssigned($event)"
+    (modalClosed)="showAssignModal = false">
+  </app-assign-package-modal>
+</div>
