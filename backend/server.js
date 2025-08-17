@@ -8,6 +8,16 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 
+// Crear servidor HTTP y Socket.io ANTES de usarlos
+// Eliminar estas líneas (470-475):
+// const server = createServer(app);
+// const io = new Server(server, {
+//   cors: {
+//     origin: "http://localhost:4200",
+//     methods: ["GET", "POST"]
+//   }
+// });
+
 // Configurar Supabase
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_ANON_KEY;
