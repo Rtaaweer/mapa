@@ -1,18 +1,12 @@
-FROM node:18-alpine
+FROM node:18
 
 WORKDIR /app
 
-# Copiar archivos de dependencias
-COPY package*.json ./
+# Copiar servidor simple
+COPY server-simple.js ./
 
-# Limpiar cache de npm e instalar dependencias
-RUN npm cache clean --force && npm install --only=production
-
-# Copiar el código fuente
-COPY . .
-
-# Exponer el puerto correcto
+# Exponer puerto
 EXPOSE 3000
 
-# Comando para ejecutar la aplicación
-CMD ["npm", "start"]
+# Ejecutar aplicación simple
+CMD ["node", "server-simple.js"]
