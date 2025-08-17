@@ -1,12 +1,12 @@
-FROM node:18
+FROM node:18-alpine
 
 WORKDIR /app
 
 # Copiar archivos de dependencias
 COPY package*.json ./
 
-# Instalar dependencias
-RUN npm install --production
+# Limpiar cache de npm e instalar dependencias
+RUN npm cache clean --force && npm install --only=production
 
 # Copiar el código fuente
 COPY . .
@@ -15,4 +15,4 @@ COPY . .
 EXPOSE 3000
 
 # Comando para ejecutar la aplicación
-CMD ["node", "server.js"]
+CMD ["npm", "start"]
