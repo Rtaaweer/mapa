@@ -1,8 +1,6 @@
 app = "mapa-backend-rt"
 primary_region = "mia"
 
-[build]
-
 [env]
   PORT = "3000"
   NODE_ENV = "production"
