@@ -594,7 +594,7 @@ io.on('connection', (socket) => {
 });
 
 // Iniciar servidor
-server.listen(port, async () => {
-  console.log(`Servidor escuchando en http://localhost:${port}`);
+server.listen(port, '0.0.0.0', async () => {
+  console.log(`Servidor escuchando en http://0.0.0.0:${port}`);
   await testSupabaseConnection();
 });
